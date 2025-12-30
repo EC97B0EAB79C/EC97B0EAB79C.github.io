@@ -24,30 +24,32 @@ sudo pacman -S nvidia-open nvidia-utils
 
 > Necessary for KDE
 
-Edit `/etc/default/grub`:
-```
-GRUB_CMDLINE_LINUX_DEFAULT="... cryptdevice=... nvidia_drm.modeset=1"
-```
+1. Edit `/etc/default/grub`:
+	```
+	GRUB_CMDLINE_LINUX_DEFAULT="... cryptdevice=... nvidia_drm.modeset=1"
+	```
 
-Update:
-```bash
-sudo grub-mkconfig -o /boot/grub/grub.cfg
-```
+2. Update:
+	```bash
+	sudo grub-mkconfig -o /boot/grub/grub.cfg
+	```
 
 #### 4. Enable Early Loading
 
-Edit `/etc/mkinitcpio.conf`:
-```
-MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
-```
+1. Edit `/etc/mkinitcpio.conf`:
+	```
+	MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
+	```
 
-Regenerate:
-```bash
-sudo mkinitcpio -P
-```
+2. Regenerate:
+	```bash
+	sudo mkinitcpio -P
+	```
 
 #### 5. Enable ASUS Hybrid Services
-> Note: for [[Guide/Linux/ASUS-Linux|ASUS-Linux]]
+
+> Note: for [[Guide/Linux/Arch/ASUS-Linux|ASUS-Linux]]
+
 ```
 sudo systemctl enable --now supergfxd
 ```

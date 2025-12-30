@@ -111,7 +111,7 @@ systemctl enable NetworkManager
 ```
 
 ### ASUS-Linux
-Install [[Guide/Linux/ASUS-Linux|ASUS-Linux]]
+Install [[Guide/Linux/Arch/ASUS-Linux|ASUS-Linux]]
 
 ## 6. Setup Desktop (KDE)
 
