@@ -8,6 +8,12 @@ title: SSH Setup
 sudo pacman -S openssh
 ```
 
+#### Enable SSH Server
+```bash
+sudo systemctl start sshd
+sudo systemctl enable sshd
+```
+
 ### `ssh-agent`
 
 1. Enable the user service

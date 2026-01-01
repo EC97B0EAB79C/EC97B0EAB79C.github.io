@@ -131,3 +131,44 @@ reboot
 ## Next Steps
 ### NVIDIA Driver
 [[Guide/Linux/NVIDIA Driver#Arch|Install]]
+
+### Packages Consider Installing
+```
+sudo pacman -S \
+	noto-fonts noto-fonts-emoji noto-fonts-cjk \
+	net-tools openssh
+```
+
+#### `bash-completion`
+1. Install
+	```bash
+	sudo pacman -S bash-completion
+	```
+2. Edit `~/.bashrc`:
+	```bash
+	[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
+	    . /usr/share/bash-completion/bash_completion
+	```
+
+### `.bashrc`
+```bash
+#  
+# ~/.bashrc  
+#  
+  
+# If not running interactively, don't do anything  
+[[ $- != *i* ]] && return  
+  
+  
+alias ls='ls --color=auto'  
+alias grep='grep --color=auto'  
+alias diff='diff --color=auto'  
+alias ip='ip -color=auto'  
+alias ll='ls -l --color=auto'  
+alias la='ls -la --color=auto'  
+  
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'  
+  
+#PS1='[\u@\h \W]\$ '  
+PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
+```
