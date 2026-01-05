@@ -44,6 +44,7 @@ jobs:
           cp -r my-content/content quartz-engine/content
           [ -f my-content/quartz.config.ts ] && cp my-content/quartz.config.ts quartz-engine/quartz.config.ts
           [ -f my-content/quartz.layout.ts ] && cp my-content/quartz.layout.ts quartz-engine/quartz.layout.ts
+          [ -f my-content/custom.scss ] && cp my-content/custom.scss quartz-engine/quartz/styles/custom.scss
 
       - name: Build Quartz
         working-directory: quartz-engine

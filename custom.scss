@@ -1,0 +1,19 @@
+@use "./base.scss";
+
+h1 {
+  font-size: 34px;
+  line-height: 40px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid;
+}
+h2 {
+  font-size: 26px;
+  line-height: 36px;
+  padding-top: 14px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid;
+}
+h3 {
+  padding-bottom: 5px;
+  border-bottom: 1px solid;
+}
