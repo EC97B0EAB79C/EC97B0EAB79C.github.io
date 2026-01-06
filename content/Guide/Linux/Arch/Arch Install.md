@@ -136,7 +136,8 @@ reboot
 ```
 sudo pacman -S \
 	noto-fonts noto-fonts-emoji noto-fonts-cjk \
-	net-tools openssh
+	net-tools openssh \
+	ntfs-3g
 ```
 
 #### `bash-completion`
