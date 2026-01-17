@@ -1,6 +1,9 @@
 ---
 title: Arch Install
 ---
+
+> For details check [ArchWiki](https://wiki.archlinux.org/title/Installation_guide)
+
 ## 1. Boot & Connect
 ```bash
 iwctl --passphrase "YOUR_PASSWORD" station wlan0 connect "YOUR_SSID"
@@ -8,86 +11,71 @@ timedatectl set-ntp true
 ```
 
 ## 2. Partition
-### Identify Disks
 
+TODO
+
+### Mount Partitions
 ```bash
-lsblk
+mount /dev/root_partition /mnt
+mount --mkdir /dev/efi_system_partition /mnt/boot
 ```
-
-### Partition
-
-```bash
-cfdisk /dev/nvme0n1
-```
-- Type: Linux filesystem
-
-### Encrypt
-
-```bash
-cryptsetup luksFormat /dev/nvme0n1p5
-cryptsetup open /dev/nvme0n1p5 cryptroot
-```
-
-### Format
-```bash
-mkfs.ext4 /dev/mapper/cryptroot
-```
-
-### Mount
-```bash
-#Root
-mount /dev/mapper/cryptroot /mnt
-# EFI
-mkdir /mnt/efi
-mount /dev/nvme0n1p1 /mnt/efi
-```
-
-> Note: Because `/dev/nvme0n1p1` has not enough space, mounting to `/mnt/efi`
 
 ## 3. Installation
 ```bash
 # Use 'intel-ucode' for Intel CPU
 pacstrap /mnt base base-devel linux linux-firmware vim git networkmanager amd-ucode
-genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 ```
 
+> If error TODO
+
 ## 4. Configuration
+### File system
+```bash
+genfstab -U /mnt >> /mnt/etc/fstab
+```
+
+#### Change root to new system
+```bash
+arch-chroot /mnt
+```
+
+### Set time and localization
+```bash
+ln -sf /usr/share/zoneinfo/Area/Location /etc/localtime
+hwclock --systohc
+locale-gen
+echo LANG=en_US.UTF-8 >> /etc/locale.conf
+```
+
 ### Mkinitcpio
 
 1. Edit `/etc/mkinitcpio.conf`:
 	```
 	HOOKS=(base udev autodetect modconf kms keyboard keymap consolefont block encrypt filesystems fsck)
+ 	#HOOKS=(base udev autodetect microcode modconf kms keyboard keymap sd-vconsole block encrypt filesystems fsck)
 	```
 2. Regenerate:
 	```bash
 	mkinitcpio -P
 	```
 
-### GRUB
+### Boot loader
+#### `systemd-boot`
+> Installing `systemd-boot` as recommended by `asus-linux`
 
-1. Install tools:
+1. Install:
 	```bash
-	pacman -S grub efibootmgr os-prober
+	bootctl install
 	```
-2. Get UUID:
-	```bash
-	blkid | grep crypto_LUKS
+2. Edit `/boot/loader/loader.conf`:
 	```
-3. Edit `/etc/default/grub`:
+	default	arch.conf
+ 	timeout	3
+ 	console-mode max
+ 	editor	no
 	```
-	GRUB_ENABLE_CRYPTODISK=y
-	GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet cryptdevice=UUID=PASTE_UUID_HERE:cryptroot root=/dev/mapper/cryptroot"
-	GRUB_DISABLE_OS_PROBER=false
-	```
-4. Install Bootloader:
-	```bash
-	grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB
-	```
-5. Generate menu:
-	```bash
-	grub-mkconfig -o /boot/grub/grub.cfg
-	```
+ TODO
 
 ## 5. Setup System
 ### User
