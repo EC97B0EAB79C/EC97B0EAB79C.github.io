@@ -17,7 +17,7 @@ title: NVIDIA Driver
 
 #### 2. Install Drivers
 ```bash
-sudo pacman -S nvidia-open nvidia-utils
+sudo pacman -S nvidia-open-dkms nvidia-utils
 ```
 
 #### 3. Enable DRM Modesetting

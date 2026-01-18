@@ -12,35 +12,76 @@ timedatectl set-ntp true
 
 ## 2. Partition
 
-TODO
+### 2.1 Create partition
+#### `fdisk`
 
-### Mount Partitions
+1. Open drive
+```bash
+fdisk /dev/nvme0n1
+```
+2. Create a new GPT (`g`)
+3. Create EFI partition
+	1. New partition (`n`)
+	2. Id: `[default]`
+	3. First sector: `[default]`
+	4. Last sector: `+1G`
+	5. Change Type to EFI: `t`, `1`
+4. Create Root partition
+	1. New partition (`n`)
+	2. First sector: `[default]`
+	3. Last sector: `[default]`
+5. Write changes (`w`)
+
+### 2.2 (Optional) Creating LUKS encryption
+
+[[Guide/Linux/LUKS|LUKS]]
+
+1. Format the partition
+	```bash
+	cryptsetup luksFormat /dev/nvme0n1p2
+	```
+2. Open encrypted partition
+	```bash
+	cryptsetup open /dev/nvme0n1p2 cryptroot
+	```
+
+### 2.3 Format Partitions
+
+1. Format EFI partition
+	```bash
+	mkfs.fat -F 32 /dev/nvme0n1p1
+	```
+2. Format encrypted root
+	```bash
+	mkfs.ext4 /dev/mapper/cryptroot
+	```
+### 2.4 Mount Partitions
 ```bash
 mount /dev/root_partition /mnt
 mount --mkdir /dev/efi_system_partition /mnt/boot
 ```
 
-## 3. Installation
+## 3. Installing essential packages
 ```bash
 # Use 'intel-ucode' for Intel CPU
-pacstrap /mnt base base-devel linux linux-firmware vim git networkmanager amd-ucode
+pacstrap /mnt base base-devel linux linux-firmware linux-headers vim git networkmanager amd-ucode
 arch-chroot /mnt
 ```
 
-> If error TODO
+> If error `file not found: /etc/vconsole.conf`, check [[Trouble Shoot/Linux Issues/Arch Install/file not found `vconsole.conf`|here]]
 
 ## 4. Configuration
-### File system
+### 4.1 File system
 ```bash
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
-#### Change root to new system
+#### 4.2 Change root to new system
 ```bash
 arch-chroot /mnt
 ```
 
-### Set time and localization
+### 4.3 Set time and localization
 ```bash
 ln -sf /usr/share/zoneinfo/Area/Location /etc/localtime
 hwclock --systohc
@@ -48,18 +89,23 @@ locale-gen
 echo LANG=en_US.UTF-8 >> /etc/locale.conf
 ```
 
-### Mkinitcpio
+### 4.4 `mkinitcpio`
 
 1. Edit `/etc/mkinitcpio.conf`:
 	```
 	HOOKS=(base udev autodetect modconf kms keyboard keymap consolefont block encrypt filesystems fsck)
  	#HOOKS=(base udev autodetect microcode modconf kms keyboard keymap sd-vconsole block encrypt filesystems fsck)
 	```
+	> Note: `encrypt` is necessary when encrypting partition
 2. Regenerate:
 	```bash
 	mkinitcpio -P
 	```
 
+### 4.5 Root password
+```bash
+passwd
+```
 ### Boot loader
 #### `systemd-boot`
 > Installing `systemd-boot` as recommended by `asus-linux`
@@ -69,16 +115,23 @@ echo LANG=en_US.UTF-8 >> /etc/locale.conf
 	bootctl install
 	```
 2. Edit `/boot/loader/loader.conf`:
-	```
+	```TOML
 	default	arch.conf
  	timeout	3
  	console-mode max
  	editor	no
 	```
- TODO
+ 3. Edit `/boot/loader/entries/arch.conf`:
+```TOML
+title   Arch Linux
+linux   /vmlinuz-linux
+initrd /amd-ucode.img
+initrd  /initramfs-linux.img
+options cryptdevice=UUID=YOUR-UUID-HERE:cryptroot root=/dev/mapper/cryptroot rw
+```
 
 ## 5. Setup System
-### User
+### 5.1 User
 
 ```bash
 useradd -m -G wheel -s /bin/bash your_user
@@ -86,19 +139,19 @@ passwd your_user
 passwd
 ```
 
-### Sudo
+### 5.2 Sudo
 
 Edit `EDITOR=vim visudo`:
 ```
-wheel ALL=(ALL:ALL) ALL
+%wheel ALL=(ALL:ALL) ALL
 ```
 
-### Network
+### 5.3 Network
 ```bash
 systemctl enable NetworkManager
 ```
 
-### ASUS-Linux
+### 5.4 ASUS-Linux
 Install [[Guide/Linux/Arch/ASUS-Linux|ASUS-Linux]]
 
 ## 6. Setup Desktop (KDE)
