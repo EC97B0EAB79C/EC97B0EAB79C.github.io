@@ -6,7 +6,7 @@ title: Fcitx5 Setup
 
 1. Install packages
    ```bash
-	sudo pacman -S fcitx5-im fcitx5-mozc fcitx5-hangul
+	sudo pacman -S fcitx5-im kcm-fcitx5 fcitx5-mozc fcitx5-hangul
 	```
 2. Add to `/etc/environment` or `~/.pam_environment`:
 	```bash
