@@ -1,5 +1,7 @@
 ---
 title: PDFJam Cheat Sheet
+tags:
+  - CheatSheet
 ---
 ## Commands
 

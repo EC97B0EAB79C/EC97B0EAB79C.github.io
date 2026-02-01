@@ -1,5 +1,7 @@
 ---
 title: ADB Cheat Sheet
+tags:
+  - CheatSheet
 ---
 ## Commands
 ### APK

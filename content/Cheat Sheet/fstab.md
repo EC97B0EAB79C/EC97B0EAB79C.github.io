@@ -1,5 +1,7 @@
 ---
 title: fstab Cheat Sheet
+tags:
+  - CheatSheet
 ---
 
 ## Config

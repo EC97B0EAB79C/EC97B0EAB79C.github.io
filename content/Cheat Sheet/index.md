@@ -1,5 +1,7 @@
 ---
 title: Cheat Sheet
+tags:
+  - CheatSheet
 ---
 ## CLI Tools
 

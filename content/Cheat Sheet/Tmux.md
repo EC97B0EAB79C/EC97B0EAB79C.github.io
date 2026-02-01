@@ -1,5 +1,7 @@
 ---
 title: Tmux Cheat Sheet
+tags:
+  - CheatSheet
 ---
 
 | Command                            | Description                                                |
