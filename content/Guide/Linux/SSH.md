@@ -16,15 +16,15 @@ sudo systemctl enable sshd
 
 ### `ssh-agent`
 
-1. Enable the user service
+1. Enable the user service:
    ```bash
    systemctl --user enable --now ssh-agent
    ```
-2. Add to `.bashrc`:
+2. Add this line to `.bashrc`:
    ```bash
    export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
    ```
-3. Add to `~/.ssh/config`:
+3. Add this line to `~/.ssh/config`:
    ```bash
    AddKeysToAgent yes
    ```

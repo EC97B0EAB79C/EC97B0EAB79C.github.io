@@ -1,7 +1,7 @@
 ---
 title: ASUS-Linux Install
 ---
-> For details see: https://asus-linux.org/guides/arch-guide/
+> For details, see https://asus-linux.org/guides/arch-guide/
 
 ## Install
 1. Edit `/etc/pacman.conf`:
@@ -10,7 +10,7 @@ title: ASUS-Linux Install
 	Server = [https://arch.asus-linux.org](https://arch.asus-linux.org)
 	```
 
-2. Install:
+2. Run these commands to install the packages:
 	```
 	pacman-key --recv-keys 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
 	pacman-key --finger 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
@@ -20,7 +20,7 @@ title: ASUS-Linux Install
  rog-control-center
 	```
 
-3. Enable
+3. Enable the service:
 ```bash
 systemctl enable --now power-profiles-daemon.service
 

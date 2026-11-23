@@ -3,28 +3,28 @@ title: Linux Unified Key Setup
 ---
 
 ## Steps
-1. Identify device:
+1. Identify the device:
 	```bash
 	lsblk
 	```
 
-2. Create the LUKS container
+2. Create the LUKS container:
 	```bash
 	sudo cryptsetup luksFormat /dev/sda
 	```
 
-3. Map encrypted volume to `/dev/mapper/encrpt`:
+3. Map the encrypted volume to `/dev/mapper/encrpt`:
 	```bash
 	sudo cryptsetup open /dev/sda encrpt
 	```
 
-4. Create filesystem:
+4. Create the filesystem:
 	```bash
 	sudo mkfs.ext4 /dev/mapper/encrpt
 	```
 
 ## Usage
-### Unencrypt and Mount
+### Unlock and Mount
 ```bash
 sudo cryptsetup open /dev/sda encrpt
 sudo mkdir -p /mnt/secure_data

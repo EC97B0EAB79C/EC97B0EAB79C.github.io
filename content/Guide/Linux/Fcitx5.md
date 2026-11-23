@@ -4,11 +4,11 @@ title: Fcitx5 Setup
 ## Setup
 ### Install
 
-1. Install packages
+1. Install the packages:
    ```bash
 	sudo pacman -S fcitx5-im kcm-fcitx5 fcitx5-mozc fcitx5-hangul
 	```
-2. Add to `/etc/environment` or `~/.pam_environment`:
+2. Add these lines to `/etc/environment` or `~/.pam_environment`:
 	```bash
 	GTK_IM_MODULE=fcitx
 	QT_IM_MODULE=fcitx

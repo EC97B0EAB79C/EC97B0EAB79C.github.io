@@ -7,11 +7,11 @@ useradd -m -d /path/to/home/directory username
 ```
 
 - `useradd`: The command to add a new user.
-- `-m`: This option tells `useradd` to create the home directory if it doesn't exist.
-- `-d /path/to/home/directory`: This specifies the new user's home directory.
+- `-m`: This option makes `useradd` create the home directory if it does not exist.
+- `-d /path/to/home/directory`: This option sets the home directory of the new user.
 - `username`: The name of the new user.
 
-### Set Passwd
+### Set the Password
 ```bash
 sudo passwd username
 ```
@@ -22,21 +22,21 @@ sudo usermod -aG groupname username
 groups username
 ```
 
-#### Add su
+#### Give Sudo Rights
 ```bash
 sudo usermod -aG sudo username
 ```
 
-- `usermod` is the command to modify a user's attributes.
+- `usermod` is the command that changes the attributes of a user.
 - `-aG sudo` adds the user to the `sudo` group.
 - `username` is the name of the user.
 
-### Permission
+### Set Permissions
 ```bash
 setfacl -m u:username:rx /path/to/directory
 ```
 
-### Set shell to Bash
+### Set the Shell to Bash
 ```shell
 sudo chsh -s /bin/bash username
 ```

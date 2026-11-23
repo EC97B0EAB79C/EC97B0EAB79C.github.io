@@ -7,7 +7,7 @@ title: ClamAV
 sudo pacman -S clamav
 ```
 
-### Config
-File location:
+### Configuration
+The configuration files are in these locations:
 - `/etc/clamav/freshclam.conf`
 - `/etc/freshclam.conf`
