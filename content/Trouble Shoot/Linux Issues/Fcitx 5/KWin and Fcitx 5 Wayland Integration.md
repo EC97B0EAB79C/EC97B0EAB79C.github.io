@@ -4,8 +4,8 @@ date: 2026-03-28
 ---
 
 
-## Problem Description
-[[#Details|Pop up]] showing when logging in.
+## 1. Problem Description
+A [[#Details|pop-up]] appears when you log in.
 
 ### Environment
 
@@ -22,17 +22,17 @@ Fcitx should be launched by KWin under KDE Wayland in order to use Wayland input
 
 
 ## 2. Root Cause
-Input method initialisation issue
+The input method has a start-up problem.
 
 ## 3. Solution
-Modify environment variables
+Change the environment variables.
 
 ### Steps
 
-In `.bashrc` or `.zshrc` or `.xprofile` or `.pam_environment` or `/etc/environment`
+Set this variable in `.bashrc`, `.zshrc`, `.xprofile`, `.pam_environment`, or `/etc/environment`:
 
 ```bash
 XMODIFIERS=@im=fcitx
 ```
-- Remove `GTK_IM_MODULE` and `QT_IM_MODULE`
+- Remove `GTK_IM_MODULE` and `QT_IM_MODULE`.
 

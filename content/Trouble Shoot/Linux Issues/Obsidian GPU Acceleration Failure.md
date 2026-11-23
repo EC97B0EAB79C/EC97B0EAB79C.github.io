@@ -4,7 +4,7 @@ date: 2026-01-18
 ---
 
 
-## Problem Description
+## 1. Problem Description
 ### Environment
 
 | OS       | Linux arch-linux 6.18.5-arch1-1 |
@@ -31,7 +31,7 @@ libva error: vaGetDriverNames() failed with operation failed
 ```
 
 ## 2. Root Cause
-- GPU acceleration failure
+- The GPU acceleration fails.
 
 ## 3. Solution
 ### Temporary Fix
@@ -39,13 +39,13 @@ libva error: vaGetDriverNames() failed with operation failed
 obsidian --disable-gpu
 ```
 
-### Modify desktop entry
+### Modify the desktop entry
 #### Steps
-1. Copy desktop file
+1. Copy the desktop file:
 	```bash
 	cp /usr/share/applications/obsidian.desktop ~/.local/share/applications/
 	```
-2. Edit `~/.local/share/applications/obsidian.desktop`
+2. Edit the file `~/.local/share/applications/obsidian.desktop`:
 	```bash
 	Exec=/usr/bin/obsidian --disable-gpu %U
 	```

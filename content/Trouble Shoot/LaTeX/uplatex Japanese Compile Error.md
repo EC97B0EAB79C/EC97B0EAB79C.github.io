@@ -4,7 +4,7 @@ date: 2025-12-25
 ---
 
 
-## Problem Description
+## 1. Problem Description
 ### Environment
 
 | OS       | Linux arch-asus 6.18.2-arch2-1      |
@@ -15,7 +15,7 @@ date: 2025-12-25
 
 ### Details
 
-Following warning displays when compiling
+When you compile the file, this warning appears:
 ```bash
 Process started: uplatex -synctex=1 -interaction=nonstopmode "main".tex
 
@@ -28,18 +28,18 @@ Process exited with error(s)
 
 ## 2. Root Cause
 
-- Configuration missing
+- The configuration is missing.
 
 ## 3. Solution
 
-Install `texlive-langjapanese` package
+Install the `texlive-langjapanese` package.
 
 ### Steps
-1. Install:
+1. Install the package:
 	```bash
 	sudo pacman -S texlive-langjapanese
 	```
-2. Rebuild the formats
+2. Rebuild the formats:
 	```bash
 	sudo fmtutil-sys --all
 	```

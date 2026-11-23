@@ -4,16 +4,16 @@ date: 2026-01-18
 ---
 
 
-## Problem Description
+## 1. Problem Description
 
 ### Details
-Error when installing packages from install ISO
+This error appears when you install the packages from the install ISO:
 ```bash
 file not found: /etc/vconsole.conf
 ```
 
 ## 2. Root Cause
-- `/etc/vconsole.conf` missing
+- The file `/etc/vconsole.conf` is missing.
 
 ## 3. Solution
 ```bash

@@ -2,7 +2,7 @@
 title: ROG Zephyrus G14 GA403UI MUX Issue
 date: 2025-12-23
 ---
-> Note: This fix is found to be temporary and OS reinstall fixed the issue
+> Note: This fix is temporary. I reinstalled the OS, and this repaired the problem.
 
 ## 1. Problem Description
 ### Environment
@@ -11,18 +11,18 @@ date: 2025-12-23
 | OS     | Fedora Linux (KDE Plasma)   |
 ### Details
 
-The laptop boots normally, but the internal main display fails to initialize after the BIOS stage.
+The laptop boots normally, but the internal main display fails to start after the BIOS stage.
 - The ASUS manufacturer logo (white) appears on the internal screen
 - Immediately after the logo, the internal screen goes black and stays off
 - The external monitor works and shows the OS login screen/desktop
-- In Fedora Display Configuration, the internal panel is not detected at all
+- Fedora Display Configuration does not detect the internal panel at all
 
 ## 2. Root Cause
 
-MUX switch became stuck in a state that prevented the OS from routing video to the internal panel
+The MUX switch stayed in a state that stopped the OS from sending video to the internal panel.
 ## 3. Solution
 
-The issue was resolved forcibly switching the GPU mode back to `hybrid` using the `supergfxctl` CLI tool.
+To repair the problem, I forced the GPU mode back to `hybrid` with the `supergfxctl` CLI tool.
 
 ### Steps
 
@@ -31,9 +31,9 @@ The issue was resolved forcibly switching the GPU mode back to `hybrid` using th
 	supergfxctl -s
 	```
 
-2. Force the mode to Hybrid
+2. Force the mode to Hybrid:
 	```bash
 	supergfxctl -m Hybrid
 	```
 
-3. Reboot
+3. Restart the computer.

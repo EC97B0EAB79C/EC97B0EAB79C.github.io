@@ -4,8 +4,8 @@ date: 2026-03-28
 ---
 
 
-## Problem Description
-Fcitx 5 Input not working no Electron applications
+## 1. Problem Description
+Fcitx 5 input does not work in Electron applications.
 
 ### Environment
 
@@ -15,13 +15,13 @@ Fcitx 5 Input not working no Electron applications
 | Linux      | 6.19.10-1-cachyos |
 
 ## 2. Root Cause
-Electron application do not natively hook into the `text-input-v3` Wayland protocol by default.
+By default, Electron applications do not use the `text-input-v3` Wayland protocol natively.
 
 ## 3. Solution
-Set explicit command-line flags.
+Set the command-line flags explicitly.
 
 ### Steps
-In `~/.config/{application}-flags.conf`:
+Add these lines to `~/.config/{application}-flags.conf`:
 ```bash
 --enable-features=UseOzonePlatform
 --ozone-platform=wayland

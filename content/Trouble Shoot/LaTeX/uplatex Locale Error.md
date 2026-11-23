@@ -4,7 +4,7 @@ date: 2025-12-25
 ---
 
 
-## Problem Description
+## 1. Problem Description
 ### Environment
 
 | OS       | Linux arch-asus 6.18.2-arch2-1      |
@@ -15,7 +15,7 @@ date: 2025-12-25
 
 ### Details
 
-Following warning displays when compiling
+When you compile the file, this warning appears:
 ```bash
 Process started: uplatex -synctex=1 -interaction=nonstopmode "main".tex
 
@@ -25,28 +25,28 @@ perl: warning: Setting locale failed. perl: warning: Please check that your loca
 
 ## 2. Root Cause
 
-- System's locale settings are defined in environment variables
-- But have not been generated on the system
+- The environment variables define the locale settings of the system.
+- But the system has not generated these locales.
 
 ## 3. Solution
 
-Generate missing locales
+Generate the missing locales.
 
 ### Steps
 
-1. Edit `/etc/locale.gen` (sudo):
+1. Use sudo to edit `/etc/locale.gen`:
 	```
 	en_US.UTF-8 UTF-8
 	```
-2. Generate
+2. Generate the locales:
 	```bash
 	sudo locale-gen
 	```
-3. Verify
+3. Verify the setting:
 	```bash
 	cat /etc/locale.conf | grep LANG=en_US.UTF-8
 	```
-4. Apply changes
+4. Apply the changes:
 	```bash
 	source /etc/profile
 	```
