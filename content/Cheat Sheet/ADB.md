@@ -6,17 +6,17 @@ tags:
 ## Commands
 ### APK
 
-**Install APK**
+**Install an APK**
 ```bash
 adb install path/to/your_app.apk
 ```
 
-**Run APK**
+**Run an APK**
 ```bash
 adb shell am start -n com.yourpackage/.YourMainActivity
 ```
 
-**Stop APK**
+**Stop an APK**
 ```bash
 adb shell am force-stop package_name
 ```

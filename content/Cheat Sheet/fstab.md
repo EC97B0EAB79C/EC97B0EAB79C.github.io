@@ -4,7 +4,7 @@ tags:
   - CheatSheet
 ---
 
-## Config
+## Configuration
 `/etc/fstab`:
 
 ```
