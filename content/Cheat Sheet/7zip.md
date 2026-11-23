@@ -1,5 +1,5 @@
 ---
-title: 7zip
+title: 7-Zip Cheat Sheet
 tags:
   - CheatSheet
 ---

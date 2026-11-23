@@ -1,5 +1,5 @@
 ---
-title: ROG Zephyrus G14 GA403UI MUX Issue
+title: ROG Zephyrus G14 GA403UI MUX Problem
 date: 2025-12-23
 ---
 > Note: This fix is temporary. An OS reinstall repaired the problem.

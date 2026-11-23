@@ -1,5 +1,5 @@
 ---
-title: Fcitx5 Setup
+title: Fcitx 5 Setup
 ---
 ## Setup
 ### Install

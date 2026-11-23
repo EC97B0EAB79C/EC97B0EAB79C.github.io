@@ -1,5 +1,5 @@
 ---
-title: Tmux Cheat Sheet
+title: tmux Cheat Sheet
 tags:
   - CheatSheet
 ---

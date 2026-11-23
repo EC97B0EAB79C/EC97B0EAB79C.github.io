@@ -1,5 +1,5 @@
 ---
-title: Fcitx 5 Not Working on Electron Application
+title: Fcitx 5 Does Not Work in Electron Applications
 date: 2026-03-28
 ---
 
