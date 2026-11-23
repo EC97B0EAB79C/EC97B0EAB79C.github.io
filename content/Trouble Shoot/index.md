@@ -2,7 +2,7 @@
 title: Trouble Shoot
 ---
 ## ROG Zephyrus G14 GA403UI
-- [[Trouble Shoot/ROG Zephyrus G14 GA403UI/MUX Issue|MUX Issue]]
+- [[Trouble Shoot/ROG Zephyrus G14 GA403UI/MUX Issue|MUX Problem]]
 
 ## LaTeX
 - [[Trouble Shoot/LaTeX/uplatex Locale Error|uplatex Locale Error]]
@@ -10,3 +10,6 @@ title: Trouble Shoot
 
 ## Linux Issues
 - [[Trouble Shoot/Linux Issues/Obsidian GPU Acceleration Failure]]
+- Fcitx 5
+	- [[Trouble Shoot/Linux Issues/Fcitx 5/Electron|Electron]]
+	- [[Trouble Shoot/Linux Issues/Fcitx 5/KWin and Fcitx 5 Wayland Integration|KWin and Fcitx 5 Wayland Integration]]
