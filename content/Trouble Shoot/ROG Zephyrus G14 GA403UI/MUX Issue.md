@@ -2,7 +2,7 @@
 title: ROG Zephyrus G14 GA403UI MUX Issue
 date: 2025-12-23
 ---
-> Note: This fix is temporary. I reinstalled the OS, and this repaired the problem.
+> Note: This fix is temporary. An OS reinstall repaired the problem.
 
 ## 1. Problem Description
 ### Environment
@@ -22,7 +22,7 @@ The laptop boots normally, but the internal main display fails to start after th
 The MUX switch stayed in a state that stopped the OS from sending video to the internal panel.
 ## 3. Solution
 
-To repair the problem, I forced the GPU mode back to `hybrid` with the `supergfxctl` CLI tool.
+To repair the problem, force the GPU mode back to `hybrid` with the `supergfxctl` CLI tool.
 
 ### Steps
 
