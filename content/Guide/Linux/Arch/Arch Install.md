@@ -16,9 +16,9 @@ timedatectl set-ntp true
 #### `fdisk`
 
 1. Open the drive:
-```bash
-fdisk /dev/nvme0n1
-```
+	```bash
+	fdisk /dev/nvme0n1
+	```
 2. Create a new GPT (`g`).
 3. Create the EFI partition:
 	1. Create a new partition (`n`).
@@ -65,7 +65,6 @@ mount --mkdir /dev/efi_system_partition /mnt/boot
 ```bash
 # Use 'intel-ucode' for Intel CPU
 pacstrap /mnt base base-devel linux linux-firmware linux-headers vim git networkmanager amd-ucode
-arch-chroot /mnt
 ```
 
 > If you see the error `file not found: /etc/vconsole.conf`, see [[Trouble Shoot/Linux Issues/Arch Install/file not found `vconsole.conf`|here]].
@@ -194,23 +193,23 @@ sudo pacman -S \
 
 ### `.bashrc`
 ```bash
-#  
-# ~/.bashrc  
-#  
-  
-# If not running interactively, don't do anything  
-[[ $- != *i* ]] && return  
-  
-  
-alias ls='ls --color=auto'  
-alias grep='grep --color=auto'  
-alias diff='diff --color=auto'  
-alias ip='ip -color=auto'  
-alias ll='ls -l --color=auto'  
-alias la='ls -la --color=auto'  
-  
-export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'  
-  
-#PS1='[\u@\h \W]\$ '  
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias diff='diff --color=auto'
+alias ip='ip -color=auto'
+alias ll='ls -l --color=auto'
+alias la='ls -la --color=auto'
+
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+#PS1='[\u@\h \W]\$ '
 PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
 ```

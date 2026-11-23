@@ -16,7 +16,7 @@ title: ASUS-Linux Install
 	pacman-key --finger 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
 	pacman-key --lsign-key 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
 	pacman-key --finger 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
-	pacman -Sy asusctl power-profiles-daemon rog-control-center
+	pacman -Syu asusctl power-profiles-daemon rog-control-center
 	```
 
 3. Enable the service:
