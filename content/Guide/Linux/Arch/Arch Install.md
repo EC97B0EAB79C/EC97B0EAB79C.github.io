@@ -94,7 +94,7 @@ echo LANG=en_US.UTF-8 >> /etc/locale.conf
 1. Edit `/etc/mkinitcpio.conf`:
 	```
 	HOOKS=(base udev autodetect modconf kms keyboard keymap consolefont block encrypt filesystems fsck)
- 	#HOOKS=(base udev autodetect microcode modconf kms keyboard keymap sd-vconsole block encrypt filesystems fsck)
+	#HOOKS=(base udev autodetect microcode modconf kms keyboard keymap sd-vconsole block encrypt filesystems fsck)
 	```
 	> Note: If you encrypt the partition, you need `encrypt`.
 2. Regenerate the initramfs:
@@ -117,18 +117,18 @@ passwd
 2. Edit `/boot/loader/loader.conf`:
 	```TOML
 	default	arch.conf
- 	timeout	3
- 	console-mode max
- 	editor	no
+	timeout	3
+	console-mode max
+	editor	no
 	```
- 3. Edit `/boot/loader/entries/arch.conf`:
-```TOML
-title   Arch Linux
-linux   /vmlinuz-linux
-initrd /amd-ucode.img
-initrd  /initramfs-linux.img
-options cryptdevice=UUID=YOUR-UUID-HERE:cryptroot root=/dev/mapper/cryptroot rw
-```
+3. Edit `/boot/loader/entries/arch.conf`:
+	```TOML
+	title   Arch Linux
+	linux   /vmlinuz-linux
+	initrd /amd-ucode.img
+	initrd  /initramfs-linux.img
+	options cryptdevice=UUID=YOUR-UUID-HERE:cryptroot root=/dev/mapper/cryptroot rw
+	```
 
 ## 5. Set Up the System
 ### 5.1 User
